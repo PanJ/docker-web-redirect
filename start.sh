@@ -19,8 +19,14 @@ fi
 cat <<EOF > /etc/nginx/conf.d/default.conf
 server {
 	listen 80;
-
-	rewrite ^/(.*)\$ $REDIRECT_TARGET\$1 permanent;
+  location /healthz {
+    access_log off;
+    return 200;
+    break;
+  }
+  location / {
+    return 301 $REDIRECT_TARGET\$request_uri;
+  }
 }
 EOF
 
