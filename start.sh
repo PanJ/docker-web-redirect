@@ -8,11 +8,6 @@ else
 		REDIRECT_TARGET="http://$REDIRECT_TARGET"
 	fi
 
-	# Add trailing slash
-	if [[ ${REDIRECT_TARGET:length-1:1} != "/" ]]; then
-		REDIRECT_TARGET="$REDIRECT_TARGET/"
-	fi
-
 	echo "Redirecting HTTP requests to ${REDIRECT_TARGET}..."
 fi
 
